@@ -6,25 +6,15 @@ import java.util.*;
 
 public class Warehouse {
 
-//    private static final Map<String, Warehouse> instances = new HashMap<>();
-    private final String name;
+
     private final List<ProductRecord> products = new ArrayList<>();
-    private Set<ProductRecord> changedProducts = new HashSet<>();
-
-//    Private constructor to prevent direct instantiation
-    private Warehouse(String name) {
-        this.name = name;
-    }
+    private final Set<ProductRecord> changedProducts = new HashSet<>();
 
 
-//    Factory method for Warehouse ___> ma tegin teisiti kui chat ytles
-
-//    public static Warehouse getInstance() {
-//        return getInstance("Default Warehouse");
-//    }
+//    Factory method for Warehouse
 
     public static Warehouse getInstance(String defaultWarehouse) {
-        return getInstance("Deaault Warehouse: " + defaultWarehouse);
+        return getInstance("Default Warehouse: " + defaultWarehouse);
     }
 
     //Add products to the warehouse
@@ -69,7 +59,7 @@ public class Warehouse {
     public Map<Category, List<ProductRecord>> getProductsGroupedByCategories() {
         Map<Category, List<ProductRecord>> categoryMap = new HashMap<>();
         for (ProductRecord product : products) {
-            categoryMap.computeIfAbsent(product.category(), k -> new ArrayList<>()).add(product);
+            categoryMap.computeIfAbsent(product.category(), p -> new ArrayList<>()).add(product);
         }
         return categoryMap;
     }
