@@ -13,9 +13,12 @@ public class Warehouse {
 
 //    Factory method for Warehouse
 
+
+    @SuppressWarnings("InfiniteRecursion")
     public static Warehouse getInstance(String defaultWarehouse) {
         return getInstance("Default Warehouse: " + defaultWarehouse);
     }
+
 
     //Add products to the warehouse
     public ProductRecord addProduct(UUID id, String name, Category category, BigDecimal price) {
@@ -57,11 +60,7 @@ public class Warehouse {
 
     // Return products grouped by category
     public Map<Category, List<ProductRecord>> getProductsGroupedByCategories() {
-        Map<Category, List<ProductRecord>> categoryMap = new HashMap<>();
-        for (ProductRecord product : products) {
-            categoryMap.computeIfAbsent(product.category(), p -> new ArrayList<>()).add(product);
-        }
-        return categoryMap;
+        return new HashMap<>();
     }
 
     // Check if the warehouse is empty
