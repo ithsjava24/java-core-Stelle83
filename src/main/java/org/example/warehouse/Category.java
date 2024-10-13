@@ -10,11 +10,11 @@ public class Category {
 
     // Private constructor to prevent public instantiation
     private Category(String name) {
-        // Ensure the first letter is capitalized
+        // Capitalize first letter
         this.name = name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
     }
 
-    // Static factory method to get or create a Category
+    // Get or create a Category
     public static Category of(String name) {
         if (name == null) {
             throw new IllegalArgumentException("Category name can't be null");
