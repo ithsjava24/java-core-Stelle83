@@ -4,7 +4,9 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 public record ProductRecord (UUID uuid, String name, Category category, BigDecimal price) {
+
     public ProductRecord {
+
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Product name can't be null or empty.");
         }
@@ -19,98 +21,3 @@ public record ProductRecord (UUID uuid, String name, Category category, BigDecim
         }
     }
 }
-    // Default price to 0 if null
-//    price = (price != null) ? price : BigDecimal.ZERO;
-//
-//    ProductRecord newProduct = new ProductRecord(id, name, category, price);
-//    products.put(id, newProduct);
-//    return newProduct;
-//}
-
-
-//
-////import java.math.BigDecimal;
-////import java.util.UUID;
-////
-////public record ProductRecord(UUID uuid, String name, Category category, BigDecimal price) {
-////    // Basic validation on construction
-////    public ProductRecord {
-////        if (name == null || name.trim().isEmpty()) {
-////            throw new IllegalArgumentException("Product name can't be null or empty.");
-////        }
-////        if (category == null) {
-////            throw new IllegalArgumentException("Category can't be null.");
-////        }
-////        if (price == null) {
-////            price = BigDecimal.ZERO;  // Default to zero if null
-////        }
-////        if (uuid == null) {
-////            uuid = UUID.randomUUID();  // Generate a UUID if none provided
-////        }
-////    }
-////}
-//
-//import java.math.BigDecimal;
-//import java.util.Objects;
-//import java.util.UUID;
-//
-//public class ProductRecord {
-//    private final UUID uuid;
-//    private final String name;
-//    private final Category category;
-//    private BigDecimal price;
-//
-//    public ProductRecord(UUID uuid, String name, Category category, BigDecimal price) {
-//        this.uuid = uuid;
-//        this.name = name;
-//        this.category = category;
-//        this.price = price;
-//    }
-//
-//    public UUID uuid() {
-//        return uuid;
-//    }
-//
-//    public String name() {
-//        return name;
-//    }
-//
-//    public Category category() {
-//        return category;
-//    }
-//
-//    public BigDecimal price() {
-//        return price;
-//    }
-//
-//    public void setPrice(BigDecimal newPrice) {
-//        this.price = newPrice;
-//    }
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (!(o instanceof ProductRecord)) return false;
-//        ProductRecord that = (ProductRecord) o;
-//        return Objects.equals(uuid, that.uuid) &&
-//                Objects.equals(name, that.name) &&
-//                Objects.equals(category, that.category) &&
-//                Objects.equals(price, that.price);
-//    }
-//
-//    // Implementera hashCode() för att stödja användning i hash-baserade samlingar
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(uuid, name, category, price);
-//    }
-//
-//    // Implementera toString() för att underlätta felsökning
-//    @Override
-//    public String toString() {
-//        return "ProductRecord{" +
-//                "uuid=" + uuid +
-//                ", name='" + name + '\'' +
-//                ", category=" + category +
-//                ", price=" + price +
-//                '}';
-//    }
-//}
