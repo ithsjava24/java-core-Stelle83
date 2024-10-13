@@ -21,7 +21,6 @@ public class Category {
         }
 
         // Check the cache and return the same instance for identical names
-//        return categoryCache.computeIfAbsent(name.toLowerCase(), Category::new);
         return categoryCache.computeIfAbsent(name, Category::new);
     }
 
