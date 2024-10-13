@@ -8,7 +8,11 @@ public class Warehouse {
     private final String name;
     private static final Map<String, Warehouse> instances = new HashMap<>();
     private final List<ProductRecord> products = new ArrayList<>();
-    private final Set<ProductRecord> changedProducts = new HashSet<>();
+    private final Set<ProductRecord> changedProducts;
+
+    {
+        changedProducts = new HashSet<>();
+    }
 
 
     private Warehouse(String store) {
@@ -77,5 +81,9 @@ public class Warehouse {
         }
         products.add(product);
         return product;
+    }
+
+    public String getName() {
+        return name;
     }
 }
