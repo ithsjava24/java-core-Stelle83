@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 
 public class Warehouse {
     private final String name;
-    private static Map<String, Warehouse> instances = new HashMap<>();
-    private List<ProductRecord> products = new ArrayList<>();
-    private Set<ProductRecord> changedProducts = new HashSet<>();
+    private static final Map<String, Warehouse> instances = new HashMap<>();
+    private final List<ProductRecord> products = new ArrayList<>();
+    private final Set<ProductRecord> changedProducts = new HashSet<>();
 
 
     private Warehouse(String store) {
@@ -56,7 +56,7 @@ public class Warehouse {
         products.stream()
                 .filter(product -> product.uuid().equals(uuid))
                 .findAny()
-                .ifPresentOrElse(product -> changedProducts.add(product),
+                .ifPresentOrElse(changedProducts::add,
                         () -> {
                             throw new IllegalArgumentException("Product with that id doesn't exist.");
                         });
